@@ -179,8 +179,6 @@
     </dependency>
 
 
-
-
     <!-- mybatis pager -->
 
     <dependency>
@@ -251,11 +249,7 @@
       <version>3.1.0</version>
     </dependency>
 
-    <dependency>
-      <groupId>com.github.pagehelper</groupId>
-      <artifactId>pagehelper</artifactId>
-      <version>5.1.10</version>
-    </dependency>
+
 
   </dependencies>
 
@@ -287,6 +281,19 @@
         </configuration>
       </plugin>
     </plugins>
+
+
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <!-- src/main/resources下的指定资源放行 -->
+        <includes>
+          <include>**/*.properties</include>
+          <include>**/*.xml</include>
+        </includes>
+        <filtering>false</filtering>
+      </resource>
+    </resources>
 
   </build>
 
