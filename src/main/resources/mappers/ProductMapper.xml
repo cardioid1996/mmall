@@ -176,4 +176,26 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from mmall_product
+    ORDER BY id asc
+  </select>
+
+  <select id="selectByNameAndId" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List"/>
+    from mmall_product
+    <where>
+      <!-- mybatis会把第一个and自动替换成where-->
+      <if test="productName!=null">
+        and name like #{productName}
+      </if>
+      <if test="productId!=null">
+        and id = #{productId}
+      </if>
+    </where>
+  </select>
 </mapper>
