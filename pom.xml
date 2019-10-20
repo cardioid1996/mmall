@@ -179,6 +179,8 @@
     </dependency>
 
 
+
+
     <!-- mybatis pager -->
 
     <dependency>
@@ -242,15 +244,6 @@
       <artifactId>jedis</artifactId>
       <version>2.9.0</version>
     </dependency>
-
-    <dependency>
-      <groupId>redis.clients</groupId>
-      <artifactId>jedis</artifactId>
-      <version>3.1.0</version>
-    </dependency>
-
-
-
   </dependencies>
 
 
@@ -272,8 +265,8 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
+          <source>1.7</source>
+          <target>1.7</target>
           <encoding>UTF-8</encoding>
           <compilerArguments>
             <extdirs>${project.basedir}/src/main/webapp/WEB-INF/lib</extdirs>
@@ -281,19 +274,6 @@
         </configuration>
       </plugin>
     </plugins>
-
-
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-        <!-- src/main/resources下的指定资源放行 -->
-        <includes>
-          <include>**/*.properties</include>
-          <include>**/*.xml</include>
-        </includes>
-        <filtering>false</filtering>
-      </resource>
-    </resources>
 
   </build>
 
