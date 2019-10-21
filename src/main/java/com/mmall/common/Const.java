@@ -19,7 +19,11 @@ public class Const {
     public interface Cart{
         int CHECKED = 1;
         int UNCHECKED = 0;
+
+        String LIMIT_NUM_FAIL = "LIMIT_NUM_FAIL";
+        String LIMIT_NUM_SUCCESS = "LIMIT_NUM_SUCCESS";
     }
+
     public enum ProductStatusEnum{
         ON_SALE(1,"在线");
         private String value;

@@ -2,21 +2,27 @@ package com.mmall.vo;
 
 import java.math.BigDecimal;
 
+/**
+ * Created by geely
+ */
 public class CartProductVo {
-    // 结合了产品和购物车的抽象对象
+
+//结合了产品和购物车的一个抽象对象
+
     private Integer id;
     private Integer userId;
     private Integer productId;
-    private Integer quantity;
+    private Integer quantity;//购物车中此商品的数量
     private String productName;
     private String productSubtitle;
     private String productMainImage;
     private BigDecimal productPrice;
-    private Integer productTotalPrice;
+    private Integer productStatus;
+    private BigDecimal productTotalPrice;
     private Integer productStock;
-    private Integer productChecked;
+    private Integer productChecked;//此商品是否勾选
 
-    private String limitQuantity;
+    private String limitQuantity;//限制数量的一个返回结果
 
     public Integer getId() {
         return id;
@@ -82,11 +88,19 @@ public class CartProductVo {
         this.productPrice = productPrice;
     }
 
-    public Integer getProductTotalPrice() {
+    public Integer getProductStatus() {
+        return productStatus;
+    }
+
+    public void setProductStatus(Integer productStatus) {
+        this.productStatus = productStatus;
+    }
+
+    public BigDecimal getProductTotalPrice() {
         return productTotalPrice;
     }
 
-    public void setProductTotalPrice(Integer productTotalPrice) {
+    public void setProductTotalPrice(BigDecimal productTotalPrice) {
         this.productTotalPrice = productTotalPrice;
     }
 
