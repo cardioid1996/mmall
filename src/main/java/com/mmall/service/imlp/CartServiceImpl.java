@@ -14,7 +14,6 @@ import com.mmall.util.BigDecimalUtil;
 import com.mmall.util.PropertiesUtil;
 import com.mmall.vo.CartProductVo;
 import com.mmall.vo.CartVo;
-import com.sun.tools.corba.se.idl.IncludeGen;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,7 +37,9 @@ public class CartServiceImpl implements ICartService {
         if(productId == null || count == null){
             return ServerResponse.createByErrorCodeMessage(ResponseCode.ILLEGAL_ARGUMENT.getCode(),ResponseCode.ILLEGAL_ARGUMENT.getDesc());
         }
-
+        Product product = productMapper.selectByPrimaryKey(productId);
+        if (product == null)
+            return ServerResponse.createByErrorMessage("该产品不存在");
         Cart cart = cartMapper.selectCartByUserIdProductId(userId,productId);
         if(cart == null){
             //这个产品不在这个购物车里,需要新增一个这个产品的记录
