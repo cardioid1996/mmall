@@ -27,7 +27,6 @@ public class OrderManageController {
     private IOrderService iOrderService;
 
 
-
     @RequestMapping("list.do")
     @ResponseBody
     public ServerResponse<PageInfo> orderList(HttpSession session, @RequestParam(value = "pageNum", defaultValue = "1")int pageNum, @RequestParam(value = "pageSize", defaultValue = "10")int pageSize){
@@ -45,6 +44,7 @@ public class OrderManageController {
         }
     }
 
+
     @RequestMapping("detail.do")
     @ResponseBody
     public ServerResponse<OrderVo> orderDetail(HttpSession session, Long orderNo){
@@ -61,6 +61,7 @@ public class OrderManageController {
             return ServerResponse.createByErrorMessage("无管理员权限");
         }
     }
+
 
     @RequestMapping("search.do")
     @ResponseBody
@@ -97,7 +98,4 @@ public class OrderManageController {
             return ServerResponse.createByErrorMessage("无权限");
         }
     }
-
-
-
 }

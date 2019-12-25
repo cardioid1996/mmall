@@ -89,19 +89,6 @@ public class OrderController {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     @RequestMapping("pay.do")
     @ResponseBody
     public ServerResponse pay (HttpSession session, Long orderNo, HttpServletRequest request){
