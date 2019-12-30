@@ -1,8 +1,8 @@
 *.class
 
 # package file
-*.war
-*.ear
+.war
+.ear
 
 # kdiff3 ignore
 *.orig
