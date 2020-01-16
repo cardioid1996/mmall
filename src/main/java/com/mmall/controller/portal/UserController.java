@@ -1,9 +1,13 @@
 package com.mmall.controller.portal;
 
 import com.mmall.common.Const;
+import com.mmall.common.RedisPool;
 import com.mmall.common.ResponseCode;
 import com.mmall.common.ServerResponse;
 import com.mmall.service.IUserService;
+import com.mmall.util.JsonUtil;
+import com.mmall.util.RedisPoolUtil;
+import lombok.extern.slf4j.Slf4j;
 import net.sf.jsqlparser.schema.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +21,7 @@ import javax.servlet.http.HttpSession;
 // 所有用户模块的接口method都为post
 @Controller
 @RequestMapping("/user/")
+@Slf4j
 public class UserController {
 
     @Autowired
@@ -28,8 +33,9 @@ public class UserController {
     public ServerResponse<User> login(String username, String password, HttpSession session) {
         // service --> dao
         ServerResponse<User> response = iUserService.login(username, password);
-        if (response.isSuccess()){
-            session.setAttribute(Const.CURRENT_USER, response.getData());
+        if (response.isSuccess()) {
+            //session.setAttribute(Const.CURRENT_USER, response.getData());
+            RedisPoolUtil.setEx(session.getId(), JsonUtil.obj2String(response.getData()), Const.RedisCacheExtime.REDIS_SESSION_EXTIME);
         }
         return response;
     }
