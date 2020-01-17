@@ -31,6 +31,7 @@ public class CookieUtil {
         Cookie cookie = new Cookie(COOKIE_NAME, token);
         cookie.setDomain(COOKIE_DOMAIN);
         cookie.setPath("/");
+        cookie.setHttpOnly(true);  // 防止脚本攻击
         // 如果maxAge不设置，cookie就不会写入硬盘，而是写在内存，只在当前界面有效
         cookie.setMaxAge(60 * 60 * 24 * 365);  // 设为一年，-1代表永久
         log.info("write cookiename: {}, cookieValue:{}", cookie.getName(), cookie.getValue());
